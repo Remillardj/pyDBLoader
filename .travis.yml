@@ -1,8 +1,8 @@
 dist: trusty
 language: python
-sudo: required
 python:
-  - "3.6"
+  - "3.6.4"
+sudo: required
 
 install:
   - pip install -r requirements.txt
