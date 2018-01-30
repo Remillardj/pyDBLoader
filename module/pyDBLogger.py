@@ -1,18 +1,31 @@
 import time
-import mysqldb
+import sqlite3
 import logging
 
-# Some settings
-db_server = "localhost:8080"
-db_user = "username"
-db_password = "password"
-db_dbname = "dbname"
-db_tbl_log = "pyDBLogger"
-
 # Program does require sudo priviledges
+db_path = "./log/pyDBLogger.db"
 log_file_path = "/var/log/pydbloader.log"
 log_error_level = "DEBUG"
 log_to_db = True
+
+'''
+ If the database file does not exist, return True, else return False
+'''
+def dbExist(dbPath):
+    return os.path.isfile(dbPath)
+
+'''
+ If the database file does not exist, then create one.
+'''
+if (dbExist(db_path) == False):
+    print ("No SQLite3 logging database! Creating one...")
+    log_db = sqlite3.connect(db_path)
+    cursor = log_db.cursor()
+    cursor.execute('''
+                    CREATE TABLE pydblogger(id INTEGER PRIMARY KEY,
+                    log_level VARCHAR(50), log_levelname VARCHAR(50),
+                    log_message TEXT, created_at VARCHAR(50), created_by VARCHAR(50));
+                       ''')
 
 class pyDBLogger(logging.Handler):
     def __init__(self, sqlConn, sqlCursor, dbTblLog):

@@ -5,6 +5,7 @@ import yaml
 
 from module import pyDBLogger as pdb
 
+
 class pydbloader():
     def __init__(self, dbType, dbPath, dbUsername, dbPassword, config):
         self.dbType = dbType
