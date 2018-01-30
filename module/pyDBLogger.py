@@ -1,6 +1,7 @@
 import time
 import sqlite3
 import logging
+import os
 
 # Program does require sudo priviledges
 db_path = "./log/pyDBLogger.db"

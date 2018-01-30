@@ -1,10 +1,9 @@
 import sys
-import loader.loader
 import os
 import yaml
 
-from module import pyDBLogger as pdb
-
+import logging_config as log
+import pyDBLogger as pdb
 
 class pydbloader():
     def __init__(self, dbType, dbPath, dbUsername, dbPassword, config):
