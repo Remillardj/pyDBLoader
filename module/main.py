@@ -9,7 +9,7 @@ import pyDBLogger as log
 log.log("Loading up pyDBLoader...")
 
 class pyDBLoader:
-    def __init__(self, dbType, dbPath, config, dbUsername=None, dbPassword=None):
+    def __init__(self, dbType, dbPath=None, config=None, dbUsername=None, dbPassword=None):
         self.dbType = dbType
         self.dbPath = dbPath
         self.dbUsername = dbUsername
@@ -37,7 +37,7 @@ class pyDBLoader:
      Returns false is not, returns true if it is
     '''
     def verify_file(self, dbPath):
-        log.log("Checking if "+dbPath+" is a file: "+str(os.path.isfile(dbPath)))
+        log.log("Checking if ''"+dbPath+"'' is a file: "+str(os.path.isfile(dbPath)))
         return os.path.isfile(dbPath)
 
     '''
@@ -73,5 +73,5 @@ class pyDBLoader:
         else:
             log.log("Could not verify configuration file. Using defaults.")
 
-py = pyDBLoader("sqlite3", "test/sqlite3_test.db", "config/logger_config.ini")
+py = pyDBLoader("sqlite3", "test/sqlite3_test.db", "./config/logger_config.ini")
 py.main()
