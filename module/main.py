@@ -44,5 +44,5 @@ class pyDBLoader():
      Will do the bulk of the work in delegating and sorting what database to input,
      and base it off the configuration
     '''
-    def main(self):
-        pass
+    def main(self, dbType):
+        log.log("Starting pyDBLoader test load")
