@@ -1,0 +1,5 @@
+{
+    "sqlite3":{
+        "dbPath":"../test/sqlite3_test.db"
+    },
+}
