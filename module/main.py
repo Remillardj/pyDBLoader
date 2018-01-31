@@ -16,6 +16,22 @@ class pyDBLoader:
         self.dbPassword = dbPassword
         self.config = config
 
+    def get_dbType(self):
+        log.log("Getter dbType called!")
+        return self.dbType
+
+    def get_dbPath(self):
+        log.log("Getter dbPath called!")
+        return self.dbPath
+
+    def get_dbUsername(self):
+        log.log("Getter dbUsername called!")
+        return self.dbUsername
+
+    def get_config(self):
+        log.log("Getter config called!")
+        return self.config
+
     '''
      A function to verify if specified file is indeed a file
      Returns false is not, returns true if it is
