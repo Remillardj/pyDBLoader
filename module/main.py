@@ -44,5 +44,8 @@ class pyDBLoader():
      Will do the bulk of the work in delegating and sorting what database to input,
      and base it off the configuration
     '''
-    def main(self, dbType):
+    def main(self, dbType, config):
         log.log("Starting pyDBLoader test load")
+        if (verify_file(config)):
+            if (load_config(config)):
+                options = load_config(config)
