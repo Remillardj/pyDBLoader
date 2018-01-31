@@ -2,10 +2,13 @@ import sys
 import os
 import yaml
 
-import logging_config as log
-import pyDBLogger as pdb
+# custom module
+import pyDBLogger as log
 
-class pydbloader():
+# Program starting log entry
+log.log("Loading up pyDBLoader...")
+
+class pyDBLoader():
     def __init__(self, dbType, dbPath, dbUsername, dbPassword, config):
         self.dbType = dbType
         self.dbPath = dbPath
@@ -18,7 +21,7 @@ class pydbloader():
      Returns false is not, returns true if it is
     '''
     def verify_file(self, dbPath):
-        #todo log action
+        log.log("Checking if "+dbPath+" is a file: "+str(os.path.isfile(dbPath)))
         return os.path.isfile(dbPath)
 
     '''
@@ -27,6 +30,7 @@ class pydbloader():
      returns false if it is not
     '''
     def load_config(self, config):
+        log.log("Loading configuration file.")
         if (verify_file(config)):
             try:
                 with open(config, 'r') as conf:
