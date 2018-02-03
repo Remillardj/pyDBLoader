@@ -1,7 +1,15 @@
 import logging
+import os
+
+log_filename = ""
+
+if (os.environ['log_file_default'] == "./logs/pydbloader-main.log"):
+    log_filename = "./logs/pydbloader-main.log"
+else:
+    log_filename = os.environ['log_file_default']
 
 logging.basicConfig(
-    filename="logs/pydbloader-main.log",
+    filename=log_filename,
     level=logging.DEBUG,
     format="%(created)f : %(asctime)s : %(relativeCreated)d | %(process)d - %(processName)s - %(thread)d - %(threadName)s | %(pathname)s - %(filename)s - %(funcName)s:[%(levelname)s/%(levelno)s]:%(message)s [%(lineno)d]"
     )
