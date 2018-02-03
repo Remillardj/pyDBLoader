@@ -51,10 +51,11 @@ class pyDBLoader:
             try:
                 with open(config, 'r') as conf:
                     options = yaml.load(conf)
+                    return options
             except:
                 #todo log action
                 return False
-            return options
+        log.log("Something went wrong! Could not open configuration file!")
 
     '''
      Will do the bulk of the work in delegating and sorting what database to input,
