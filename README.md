@@ -1,5 +1,5 @@
 # pyDBLoader
-Current Version: 0.0.1 AlphaDev
+Current Version: 0.0.2 AlphaDev
 
 pyDBLoader is a Python 3.6.4 database loader. The purpose of this software is to
 automatically insert your data for a specified database.
