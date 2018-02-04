@@ -76,7 +76,3 @@ class pyDBLoader:
                 log.log("Could not load configuration files. Using defaults.")
         else:
             log.log("Could not verify configuration file. Using defaults.")
-
-if (__name__ == "__main__"):
-    py = pyDBLoader("sqlite3", "test/sqlite3_test.db", "./config/logger_config.ini")
-    py.main()

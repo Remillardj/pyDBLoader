@@ -1,11 +1,14 @@
+from __future__ import absolute_import
+
 import argparse
 import sys
-import module.logging_config as log
 import os
+
+import module.logging_config
 
 # Set up default variables
 version = "pyDBLoader 0.0.2 [AlphaDev]"
-config_file_default = './config/logger_config.yml'
+config_file_default = "./config/logger_config.yml"
 log_file_default = "./logs/pydbloader-main.log"
 
 # Set environment variables
@@ -102,3 +105,8 @@ if (__name__ == "__main__"):
     # Process password argument
     if (args.password):
         os.environ['password'] = args.password
+
+if (__name__ == "__main__"):
+    import module.main as pydb
+    pydb.pyDBLoader("sqlite3", "test/sqlite3_test.db", "./config/logger_config.ini")
+    pydb.main()
