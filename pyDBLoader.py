@@ -6,7 +6,7 @@ import argparse
 import sys
 import os
 
-import module.logging_config
+from module import logging_config as log
 
 # Set up default variables
 version = "pyDBLoader 0.0.2 [AlphaDev]"
