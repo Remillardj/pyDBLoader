@@ -1,4 +1,4 @@
-with open('requirements.txt') as f:
+s -with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
 setup(name = 'pydbloader',
