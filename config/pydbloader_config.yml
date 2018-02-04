@@ -1,5 +1,23 @@
-{
-    "sqlite3":{
-        "dbPath":"../test/sqlite3_test.db"
-    },
-}
+---
+  server:
+    - name: sqlite3
+      type: sqlite3
+      dbpath: none
+      ip: none
+      port: none
+      user: none
+      pass: none
+    - name: postgresql
+      type: postgresql
+      dbpath: none
+      user: none
+      pass: none
+      ip: 127.0.0.1
+      port: 5432
+    - name: mysql
+      type: mysql
+      dbpath: none
+      user: none
+      pass: none
+      ip: 127.0.0.1
+      port: 3306

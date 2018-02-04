@@ -9,7 +9,7 @@ import pyDBLogger as log
 log.log("Loading up pyDBLoader...")
 
 class pyDBLoader:
-    def __init__(self, dbType, dbPath=None, config=None, dbUsername=None, dbPassword=None):
+    def __init__(self, dbType, dbPath=None, config=None, dbUsername=None, dbPassword=None, dbPort=None):
         self.dbType = dbType
         self.dbPath = dbPath
         self.dbUsername = dbUsername
@@ -63,10 +63,13 @@ class pyDBLoader:
     '''
     def main(self):
         log.log("Starting pyDBLoader test load")
+
+        log.log("Loading up the configuration file!")
         if (self.verify_file(self.config)):
             log.log("Verified configuration file: "+str(self.config))
             if (self.load_config(self.config)):
                 options = self.load_config(self.config)
+                print(options)
                 log.log("Loaded configurations!: "+str(options))
                 print (options)
             else:
@@ -74,5 +77,6 @@ class pyDBLoader:
         else:
             log.log("Could not verify configuration file. Using defaults.")
 
-py = pyDBLoader("sqlite3", "test/sqlite3_test.db", "./config/logger_config.ini")
-py.main()
+if (__name__ == "__main__"):
+    py = pyDBLoader("sqlite3", "test/sqlite3_test.db", "./config/logger_config.ini")
+    py.main()
