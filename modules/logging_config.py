@@ -3,20 +3,29 @@ import os
 import sys
 
 log_filename = "./logs/pydbloader-main.log"
-if (os.environ['log_file_default'] == "./logs/pydbloader-main.log"):
-    log_filename = "./logs/pydbloader-main.log"
-else:
-    log_filename = os.environ['log_file_default']
+
+# Check if the environment variable is set. If it is, then use it to log to the location.
+# If it is not set, then use the default.
+try:
+    if (os.getenv('log_file_default') != None):
+        if (os.environ['log_file_default'] == "./logs/pydbloader-main.log"):
+            log_filename = "./logs/pydbloader-main.log"
+    else:
+        print ("log_file_default environment variable not set, setting to default: " + log_filename)
+        os.environ['log_file_default'] = log_filename
+except KeyError as e:
+    print ("Error: " + e)
 
 '''
  Check if verbosity is set, and if it is, log to file and console
 '''
-if (os.environ['verbose'] is not False):
-    file_handler = logging.FileHandler(filename=log_filename)
-    stdout_handler = logging.StreamHandler(sys.stdout)
-    handlers = [file_handler, stdout_handler]
-else:
-    file_handler = logging.FileHandler(filename=log_filename)
+file_handler = logging.FileHandler(filename=log_filename)
+try:
+    if (os.environ['verbose'] != None):
+        stdout_handler = logging.StreamHandler(sys.stdout)
+        handlers = [file_handler, stdout_handler]
+except KeyError as e:
+    print ("verbose environment variable not set, setting to default: False")
     handlers = [file_handler]
 
 logging.basicConfig(
@@ -30,19 +39,21 @@ logging.basicConfig(
 # other levels
 def log(message, level="DEBUG"):
     if (level == "DEBUG"):
-        logging_config.logging.debug(message)
+        logging.debug(message)
     elif (level == "INFO"):
-        logging_config.logging.info(message)
+        logging.info(message)
     elif (level == "WARNING"):
-        logging_config.logging.warning(message)
+        logging.warning(message)
     elif (level == "CRITICAL"):
-        logging_config.logging.critical(message)
+        logging.critical(message)
     elif (level == "ERROR"):
-        logging_config.logging.error(message)
+        ogging.error(message)
     else:
-        logging_config.logging.error("Log failed to input message")
+        logging.error("Log failed to input message")
         print("Log failed to input message")
         return False
+
+log("Logging is set up!")
 
 # Will implement a configuration file later date, just want
 # to get this up and running.

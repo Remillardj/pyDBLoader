@@ -1,10 +1,14 @@
 #! /usr/bin/env python3
 
-from __future__ import absolute_import
-
 import argparse
 import sys
 import os
+
+# Ugh I don't want to do this but I got no choice for debugging
+sys.path.append("/Users/remillardj/Tech/Repo/pyDBLoader/modules/")
+print(sys.path)
+
+import loader
 
 # Set up default variables
 version = "pyDBLoader 0.0.2 [AlphaDev]"
@@ -22,7 +26,9 @@ os.environ['password'] = "None"
 
 # Log to file as default
 os.environ['log_file_default'] = log_file_default
-from modules import logging_config as log
+import logging_config as log
+
+sys.exit()
 
 def file_exists(file):
     log.log("Checking if file exists: " + file + "... " + os.path.exists(file))
@@ -103,6 +109,6 @@ if (args.password):
     os.environ['password'] = args.password
 
 if (__name__ == "__main__"):
-    from modules import loader
+    import loader
     pydb.pyDBLoader("sqlite3", "test/sqlite3_test.db", "./config/logger_config.yml")
     pydb.loader()
