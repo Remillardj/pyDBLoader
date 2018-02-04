@@ -1,6 +1,7 @@
 import time
 import mysqldb
 import logging
+import os
 
 # Some settings
 db_server = "localhost:8080"
@@ -12,7 +13,7 @@ db_tbl_log = "pyDBLogger"
 # Program does require sudo priviledges
 log_file_path = "/var/log/pydbloader.log"
 log_error_level = "DEBUG"
-log_to_db = True
+log_to_db = False
 
 class pyDBLogger(logging.Handler):
     def __init__(self, sqlConn, sqlCursor, dbTblLog):
@@ -54,5 +55,5 @@ logging.basicConfig(filename=log_file_path)
 
 if (log_to_db):
     logging.getLogger('').addHandler(logdb)
-    log = logging.getLogger("pyDBLogger")
+    log = logging.getLogger(os.path.basename(__file__))
     log.setLevel(log_error_level)
